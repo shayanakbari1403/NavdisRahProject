@@ -1,0 +1,370 @@
+<!--Header Start-->
+<header id="rs-header" class="rs-header transparent-header">
+
+
+    <!-- Header Menu Start -->
+    <div class="menu-area rs-defult-header menu-sticky">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-3">
+                    <div class="logo-area main-logo-area">
+                        <a href="index"><img src="images/logo-2.png" alt="logo"></a>
+                    </div>
+                    <div class="logo-area transparent-logo-area">
+                        <a href="index"><img src="images/logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="main-menu">
+                        <a class="rs-menu-toggle"><i class="fa fa-bars"></i></a>
+                        <nav class="rs-menu">
+                            {{#menu lang}}
+                            {{/menu}}
+                        </nav>
+                    </div>
+                    <div class="appointment-cart hidden-md">
+                        <ul class="cart">
+                            <li class="search"><a href="/en">EN</a></li>
+                            <li><a href="/fa">FA</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Menu End -->
+
+    <!-- Canvas Menu start -->
+    {{!-- <nav class="right_menu_togle">
+        <div class="close-btn"><span id="nav-close" class="text-center"><i class="fa fa-close"></i></span></div>
+        <div class="canvas-logo">
+            <a href="index"><img src="images/white-logo.png" alt="logo"></a>
+        </div>
+        <ul class="sidebarnav_menu list-unstyled main-menu">
+            <!--Home Menu Start-->
+            <li><a href="index.html">Home</a></li>
+            <!--Home Menu End-->
+
+            <!--About Menu Start-->
+            <li><a href="about.html">About</a></li>
+            <!--About Menu End-->
+
+            <!--Services Menu Start-->
+            <li><a href="services.html">Services</a></li>
+            <!--Services Menu End-->
+
+            <!--Blog Menu Star-->
+            <li><a href="blog.html">Blog</a></li>
+            <!--Blog Menu End-->
+
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="canvas-contact">
+            <h5 class="canvas-contact-title">Contact Info</h5>
+            <ul class="contact">
+                <li><i class="fa fa-globe"></i>Tikkatuli Road, New York, USA</li>
+                <li><i class="fa fa-phone"></i>+123445789</li>
+                <li><i class="fa fa-envelope"></i><a href="mailto:info@yourcompany.com">info@yourcompany.com</a></li>
+                <li><i class="fa fa-clock-o"></i>10:00 AM - 11:30 PM</li>
+            </ul>
+            <ul class="social">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </div>
+    </nav> --}}
+    <!-- Canvas Menu end -->
+</header>
+<!--Header End-->
+
+<!-- Main content Start -->
+<div class="main-content">
+    <!-- Slider Start -->
+    <div id="rs-slider" class="rs-slider rs-slider-two">
+
+        <div id="video_overlays" style="position: absolute;width:100%;height:100%;background-color: rgba(0, 0, 0, 0.6)">
+        </div>
+        <video autoplay muted loop id="myVideo" poster="/images/banner/counter.jpg" style="width:100%;cursor: none;">
+            <source src="/images/video/pols.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        {{#isRtl lang}}
+        <div class="nivo-caption" style="display: block;">
+            <div class="display-table">
+                <div class="display-table-cell">
+                    <h3 class="sl-sub-title white-color" style="">
+                        <h3 class="white-color" style="margin-right:-250px">آبادانی ایران عزیز</h3>
+                        <h3 class="white-color" style="margin-right:0">افتخاریست بس بزرگ</h3>
+                        <h3 class="white-color" style="margin-right: 300px"> از برای آبادگرانش</h3>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        {{/isRtl}}
+    </div>
+    <!-- Slider End -->
+    <!-- About Us Start -->
+    {{#with introduction}}
+    <section id="rs-about" class="rs-about pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mb-md-60">
+                    <div class="sec-title mod-style">
+                        <h4>{{subtitle}}</h4>
+                        <h3 id="intro-title">{{title}}</h3>
+                    </div>
+                    <p class="about-desc">{{desc_1}}</p>
+                    <p class="about-desc2">{{desc_2}}</p>
+                    <a href="about" class="readon lawer-btn">{{button_text}}</a>
+                </div>
+                <div class="col-lg-5">
+                    <div class="about-img">
+                        <img src="images/service/home.jpeg" alt="About image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Us End -->
+    {{/with}}
+    <!-- Services Start -->
+    {{#with services}}
+    <section id="rs-services"
+        class="rs-services services-carousel sec-spacer gray-color how-we-work defult-style sec-spacer">
+        <div class="container">
+            <div class="sec-title">
+                <h3>{{title}}</h3>
+                <p>
+                    {{subtitle}}
+                </p>
+            </div>
+            <div class="work-sec-gallery">
+                <div class="row">
+                    {{#each items}}
+                    <div class="col-lg-4 col-md-6 mb-30">
+                        <div class="work-column">
+                            <div class="common-box">
+                                <img src="{{image}}" alt="{{alt-image}}">
+                            </div>
+                            <div class="work-gallery-caption">
+                                <h4><a href="{{url}}">{{title}}</a></h4>
+                                <p>{{desc}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services End -->
+    {{/with}}
+
+    {{#with projects}}
+    <!-- Portfolio Start -->
+    <section id="rs-portfolio" class="rs-portfolio2 sec-spacer" dir="ltr">
+        <div class="container">
+            <div class="sec-title">
+                <h3>{{title}}</h3>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="rs-carousel owl-carousel" data-loop="true" data-items="4" data-margin="20"
+                        data-autoplay="true" data-autoplay-timeout="5000" data-smart-speed="2000" data-dots="false"
+                        data-nav="true" data-nav-speed="false" data-mobile-device="1" data-mobile-device-nav="true"
+                        data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="true"
+                        data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="true"
+                        data-ipad-device-dots2="false" data-md-device="3" data-md-device-nav="true"
+                        data-md-device-dots="false">
+                        {{#each items}}
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="{{image}}" alt="{{alt-image}}" />
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h4 class="p-title"><a href="{{url}}">{{title}}</a></h4>
+                                        <a href="{{url}}" class="project-btn">{{../button_text}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{!-- <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="images/portfolio/home2.jpg" alt="Portfolio Image" />
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h4 class="p-title"><a href="portfolio-details.html">Marketing Plan</a></h4>
+                                        <a href="portfolio-details.html" class="project-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="images/portfolio/home3.jpg" alt="Portfolio Image" />
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h4 class="p-title"><a href="portfolio-details.html">Speaker Block</a></h4>
+                                        <a href="portfolio-details.html" class="project-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-img">
+                                <img src="images/portfolio/home4.jpg" alt="Portfolio Image" />
+                            </div>
+                            <div class="portfolio-content">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h4 class="p-title"><a href="portfolio-details.html">Financial Planning</a></h4>
+                                        <a href="portfolio-details.html" class="project-btn">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio End -->
+    {{/with}}
+
+
+    <div class="why-choose-us defult-style gray-color pt-100 rs-defult-team defult-style sec-spacer">
+        <div class="counter-top-area defult-style" style="padding-top: 100px;">
+            {{#with stats}}
+
+            <div>
+                <div class="row rs-count">
+                    <div class="dark-layer" style="margin-top: -35px;"></div>
+                    <!-- COUNTER-LIST START -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12 wow fadeInUp">
+                        <div class="rs-counter-list">
+                            <i class="fa fa-road"></i>
+                            <h3 class="white-color" dir="ltr">{{road.value}} <span style="font-size: 14px">KM</span>
+                            </h3>
+                            {{!-- <h3 class="rs-counter">500</h3> --}}
+                            <h4>{{road.title}}</h4>
+                        </div>
+                    </div>
+                    <!-- COUNTER-LIST END -->
+
+                    <!-- COUNTER-LIST START -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12 wow fadeInUp">
+                        <div class="rs-counter-list">
+                            <i class="fa fa-exchange"></i>
+                            <h3 class="white-color">{{tunnel.value}}</h3>
+                            <h4>{{tunnel.title}}</h4>
+                        </div>
+                    </div>
+                    <!-- COUNTER-LIST END -->
+
+                    <!-- COUNTER-LIST START -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12 wow fadeInUp">
+                        <div class="rs-counter-list">
+                            <i class="fa fa-train"></i>
+                            <h3 class="white-color" dir="ltr">{{railway.value}} <span style="font-size: 14px">KM</span>
+                            </h3>
+                            <h4>{{railway.title}}</h4>
+                        </div>
+                    </div>
+                    <!-- COUNTER-LIST END -->
+
+                    <!-- COUNTER-LIST START -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-12 wow fadeInUp">
+                        <div class="rs-counter-list">
+                            <i class="fa fa-usd"></i>
+                            <h3 class="white-color" dir="ltr">{{worth.value}} <span style="font-size: 14px">R</span>
+                            </h3>
+                            <h4 class="last">{{worth.title}}</h4>
+                        </div>
+                    </div>
+                    <!-- COUNTER-LIST END -->
+                </div>
+            </div>
+            {{/with}}
+
+        </div>
+    </div>
+
+    <!-- Expertise Area satar -->
+
+    <div class="why-choose-us defult-style gray-color pt-100 rs-defult-team defult-style sec-spacer">
+
+
+        <div class="container">
+            {{#with features}}
+            <div class="sec-title">
+                <h3>{{title}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-md-30 mpb-40">
+                    <div class="video-section-area">
+                        <div id="15452511226747648">
+                            <script type="text/JavaScript"
+                                src="https://www.aparat.com/embed/LMlpT?data[rnddiv]=15452511226747648&data[responsive]=yes"></script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12 pl-45 services-responsibiity">
+                    <div class="service-res-inner service-res-inner-flex ml-10">
+
+                        {{#each honors}}
+                        <div class="services-item services-item-flex">
+                            <div class="service-mid-icon">
+                                <a href="#"><span class="service-mid-icon-container"><i class="{{icon}}"></i></span></a>
+                            </div>
+                            <div class="services-desc">
+                                <h3 class="services-title"><a href="#">{{title}}</a></h3>
+                                {{#if desc}}
+                                <p>{{desc}}</p>
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+            </div>
+            {{/with}}
+        </div>
+
+    </div>
+    <!-- Expertise Area end -->
+
+
+    <!-- Partner Start -->
+
+    <!-- Partner End -->
+
+    {{#with partners}}
+    <section dir="ltr" id="rs-defult-partner" class="rs-defult-partner pt-100 pb-100 gray-color">
+        <div class="container">
+            <div class="rs-carousel owl-carousel" data-loop="true" data-items="5" data-margin="30" data-autoplay="true"
+                data-autoplay-timeout="8000" data-smart-speed="2000" data-dots="false" data-nav="false"
+                data-nav-speed="false" data-mobile-device="2" data-mobile-device-nav="false"
+                data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="false"
+                data-ipad-device-dots="false" data-ipad-device2="3" data-ipad-device-nav2="true"
+                data-ipad-device-dots2="false" data-md-device="4" data-md-device-nav="false"
+                data-md-device-dots="false">
+                {{#each companies}}
+                <div class="partner-item">
+                    <a href="{{url}}"><img src="{{image}}" alt="{{name}}"></a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    {{/with}}

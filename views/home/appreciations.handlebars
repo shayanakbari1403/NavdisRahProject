@@ -1,0 +1,83 @@
+{{> page_menu }}
+<div class="main-content">
+
+  <div class="rs-breadcrumbs sec-color">
+    <div class="breadcrumbs-image">
+      <div class="dark-layer"></div>
+      <img
+        class="contact-image"
+        src="images/about/handshake.jpg"
+        alt="Breadcrumbs Image"
+      />
+      <div class="breadcrumbs-inner">
+        <div class="container">
+          <div class="breadcrumbs-text">
+            <h1 class="breadcrumbs-title">{{title}}</h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#with projects}}
+
+    <div id="rs-appreciations" class="rs-blog modified gray-color">
+      <div class="container">
+        <div class="sec-title3">
+          <h3>{{title}}</h3>
+        </div>
+        <div class="row">
+          {{#each items}}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="blog-item mb-40">
+                <div class="blog-img">
+                  <img src="{{this}}" alt="Blog Image" />
+                  <div class="blog-img-content">
+                    <div class="display-table">
+                      <div class="display-table-cell">
+                        <a class="image-popup" href="{{this}}" title="تقدیر ">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/with}}
+  {{#with expo}}
+
+    <div id="rs-appreciations" class="rs-blog modified">
+      <div class="container">
+        <div class="sec-title3">
+          <h3>{{title}}</h3>
+        </div>
+        <div class="row">
+          {{#each items}}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+              <div class="blog-item mb-40">
+                <div class="blog-img">
+                  <img src="{{this}}" alt="Blog Image" />
+                  <div class="blog-img-content">
+                    <div class="display-table">
+                      <div class="display-table-cell">
+                        <a class="image-popup" href="{{this}}" title="تقدیر ">
+                          <i class="fa fa-search"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/with}}
+
+</div>

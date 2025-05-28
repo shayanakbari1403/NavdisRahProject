@@ -1,0 +1,223 @@
+{{> page_menu }}
+<div class="main-content">
+    <!-- Breadcrumbs Start -->
+    <div class="rs-breadcrumbs sec-color">
+        <div class="breadcrumbs-image">
+            <div class="dark-layer"></div>
+            <img class="contact-image" src="images/about/banner.jpeg" alt="Breadcrumbs Image">
+            <div class="breadcrumbs-inner">
+                <div class="container">
+                    <div class="breadcrumbs-text">
+                        <h1 class="breadcrumbs-title">{{title}}</h1>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
+    <!-- Expertise Area satar -->
+    {{#with intro}}
+    <div class="rs-about-2 gray-color sec-spacer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 mb-md-50">
+                    <div class="service-res-inner">
+                        <div class="sec-title3">
+                            <h3>{{title}}</h3>
+                        </div>
+                        {{{desc}}}
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <div class="video-section-area">
+                        <div class="image-here">
+                            <img src="images/about/success.jpeg" alt="">
+                        </div>
+                        <div class="overly-border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/with}}
+    <!-- Expertise Area end -->
+
+
+    {{#with honors}}
+    <!-- Expertise Area satar -->
+    <div class="how-we-work about-work top-history sec-spacer">
+        <div class="container">
+            <div class="sec-title3">
+                <h3>{{title}}</h3>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mb-30">
+                            <div class="history-column">
+                                <i class="fa fa-trophy"></i>
+                                <h4><span>{{rankings.title}}</span></h4>
+                                <ul>
+                                    {{#each rankings.items}}
+                                    <li>{{this}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        {{#if memberships}}
+                        <div class="col-md-6 col-sm-12 mb-30">
+                            <div class="history-column">
+                                <i class="fa fa-handshake-o"></i>
+                                <h4><span>{{memberships.title}}</span></h4>
+                                <ul>
+                                    {{#each memberships.items}}
+                                    <li>{{this}}</li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Expertise Area end -->
+    {{/with}}
+
+
+
+    {{#with certificates}}
+
+    <div id="rs-certificates" class="rs-blog modified gray-color">
+        <div class="container">
+            <div class="sec-title3">
+                <h3>{{title}}</h3>
+            </div>
+            <p>{{desc}}</p>
+            <div class="row">
+
+                {{#each items}}
+                {{#isEqual desc ""}}
+                <div class="blog-item mb-40 col-lg-4 col-md-4 col-sm-6">
+                    <div class="blog-img">
+                        <img src="{{img}}" alt="Blog Image">
+                        <div class="blog-img-content">
+                            <div class="display-table">
+                                <div class="display-table-cell">
+                                    <a class="image-popup" href="{{img}}" title="تقدیر ">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="col-lg-12 col-md-12 col-sm-12"
+                    style="display: flex;align-items: center;justify-content: space-around;">
+                    <div class="blog-item mb-40 col-lg-3 col-md-4 col-sm-6">
+                        <div class="blog-img">
+                            <img src="{{img}}" alt="Blog Image">
+                            <div class="blog-img-content">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <a class="image-popup" href="{{img}}" title="تقدیر ">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-6">
+                        <p style="text-align: justify;">{{desc}}</p>
+                    </div>
+                </div>
+                {{/isEqual}}
+
+                {{!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="blog-item mb-40">
+                        <div class="blog-img">
+                            <img src="{{this}}" alt="Blog Image">
+                            <div class="blog-img-content">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <a class="image-popup" href="{{this}}" title="تقدیر ">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    {{/with}}
+
+    {{#with team}}
+    <div id="rs-team" class="rs-team-inner rs-team-inner-3 pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                {{#each members}}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                    <div class="team-grid">
+                        <div class="team-image">
+                            <img src="{{image}}" alt="Team Image">
+                        </div>
+                        <div class="text-bottom">
+                            <h4 class="person-name"><a href="#">{{name}}</a></h4>
+                            <span class="designation">{{title}}</span>
+                        </div>
+                        <div class="team-content">
+                            <div class="text-box">
+                                <h4 class="person-name"><a href="#">{{name}}</a></h4>
+                                <span class="designation">{{title}}</span>
+                                <span class="designation">
+                                    <hr />
+                                    {{{desc}}}
+                                </span>
+                                {{!-- <div class="team-social">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                    </ul>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    {{/with}}
+
+    {{#with policy}}
+    <div class="rs-about-2 sec-spacer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 mb-md-50">
+                    <div class="service-res-inner company-policy">
+                        <div class="sec-title3">
+                            <h3>{{title}}</h3>
+                        </div>
+                        {{{desc}}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {{/with}}
+
+
+
+</div>

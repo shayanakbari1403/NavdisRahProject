@@ -1,0 +1,19 @@
+        {{> page_menu }}
+  
+  <div class="main-content">
+            <!-- Erro 404 Page Start Here -->
+            <div id="rs-page-error" class="rs-page-error">
+                <div class="error-text">
+                    <h1 class="error-code">404</h1>
+                      {{#isRtl lang}}
+                    <h3 class="error-message">صفحه مورد نظر پیدا نشد</h3>
+                    <a class="back-home" href="/" title="HOME">بازگشت</a>
+                        {{else}}
+                    <h3 class="error-message">Page Not Found</h3>
+                    <a class="back-home" href="/" title="HOME">Back to Homepage</a>
+                        {{/isRtl}}
+
+                </div>
+            </div>
+            <!-- Erro 404 Page End Here -->
+        </div>

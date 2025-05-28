@@ -1,0 +1,67 @@
+{{> page_menu }}
+
+ <section class="main-content">
+            <!-- Breadcrumbs Start -->
+            <div class="rs-breadcrumbs sec-color">
+                <div class="breadcrumbs-image">
+                    <div class="dark-layer"></div>
+                    <img class="contact-image" src="images/project/banner.jpeg" alt="Breadcrumbs Image">
+                    <div class="breadcrumbs-inner">
+                        <div class="container">
+                            <div class="breadcrumbs-text">
+                                <h1 class="breadcrumbs-title">{{title}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <!-- Breadcrumbs End --> 
+
+            <!-- Project style Start -->
+            <div id="rs-project-style" class="rs-project-style pt-100 pb-100">
+                <div class="container">
+                        <h3 class="p-style-title">جزئیات پروژه</h3>
+                    <div class="row">
+                         <div class="p-style-wrap col-md-8 col-lg-7">
+                        <div class="row">
+                            {{#each images}}
+                            <div class="col-md-6 col-sm-12 mb-sm-30">
+                                <div class="item-grid">
+                                    <div class="image-icon">
+                                        <img src="{{this}}" alt="Project Image">
+                                        <a class="image-popup" href="{{this}}"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                            {{!-- <div class="col-md-6 col-sm-12 mb-sm-30">
+                                <div class="item-grid">
+                                    <div class="image-icon">
+                                        <img src="images/project/project-style/2.jpg" alt="Project Image">
+                                        <a class="image-popup" href="images/project/project-style/2.jpg"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div> --}}
+                        </div>
+                    </div>
+                        <div class="col-lg-5 col-md-4">
+                            <div class="ps-informations mb-md-30">
+                                <h4 class="info-title">{{title}}</h4>
+                                <ul>
+                                    {{!-- <li><span>نام پروژه:  </span>{{title}}</li>                     --}}
+                                    <li><span>کارفرما:  </span>{{employer}}</li>                    
+                                    {{!-- <li><span>دستگاه نظارت:  </span>{{observer}}</li> --}}
+                                    <li><span>سال شروع: </span>{{start_year}}</li>
+                                    {{!-- <li><span>سال خاتمه: </span>{{end_year}}</li> --}}
+                                    <li><span>وضعیت: </span>{{status}}</li>
+                                    <li><span>مشخصات کار: </span>{{{details}}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+            <!-- Project Gallery End -->
+        </section> 

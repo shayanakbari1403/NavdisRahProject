@@ -1,0 +1,71 @@
+{{> page_menu }}
+<section class="main-content">
+    <!-- Breadcrumbs Start -->
+    <div class="rs-breadcrumbs sec-color">
+        <div class="breadcrumbs-image">
+            <img src="images/breadcrumbs/project-full-width.jpg" alt="Breadcrumbs Image">
+            <div class="breadcrumbs-inner">
+                <div class="container">
+                    <div class="breadcrumbs-text">
+                        <h1 class="breadcrumbs-title">{{title}}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
+    <!-- Project Section Start -->
+    <div id="rs-portfolio" class="rs-portfolio sec-spacer">
+        <div class="gridFilter text-center">
+            {{#each categories}}
+            <button class='{{#if @first}}active{{/if}}' data-filter="{{name}}">{{title}}</button>
+            {{/each}}
+            {{!-- <button data-filter=".filter2">Finance</button>
+            <button class="active" data-filter="*">All Projects</button>
+            <button data-filter=".filter3">Marketing</button> --}}
+        </div><!-- .gridFilter end-->
+        <div class="row grid">
+            {{#each list}}
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-30 grid-item {{categories}}">
+                <div class="gallery-item popup-inner">
+                    <div class="gallery-content">
+                        <img src="{{#if image}}{{image}}{{/if}}" alt="" style="width:450px; height:340px;" />
+                        <div class="popup-text">
+                            <div class="contents-here">
+                                {{#if url}}
+                                <a class="icon-part" href="{{url}}">
+                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                </a>
+                                <h4 class="title"><a href="{{url}}">{{title}}</a></h4>
+                                {{else}}
+                                <h4 class="title white-color">{{title}}</h4>
+                                {{/if}}
+
+                                <ul>
+                                    <li>
+                                        <span class="white-color">{{subtitle}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .gallery-item end -->
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- Project Section End -->
+</section>
+<script>
+    { { #if service } }
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            document.querySelectorAll('[data-filter=".{{service}}"]')[0].click();
+        }, 1000);
+        {
+            {
+                /if}}
+            });
+
+</script>

@@ -1,0 +1,294 @@
+﻿@import url(fontiran.css); /* لینک فایلی که وظیفه بارگذاری فونت ها را برعهده دارد */
+body {
+  font-family: IRANSans !important;
+  font-weight: 300;
+  direction: rtl;
+  background-color: #e2e2e2;
+  margin: 0;
+  text-align: start;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+  font-family: IRANSans !important;
+}
+h1 {
+  font-weight: bold;
+}
+@media only screen and (max-width: 991px) {
+  .menu-area.rs-defult-header.menu-sticky {
+    direction: ltr;
+  }
+  .display-table-cell {
+    padding-top: 0px;
+  }
+  .sl-sub-title {
+    width: 100% !important;
+  }
+  .sl-sub-title > span {
+    line-height: 12px;
+    margin-right: 50px;
+  }
+  .sl-sub-title > span:first-child {
+    margin-right: 0px;
+  }
+  .sl-sub-title > span:last-child {
+    margin-right: 150px;
+  }
+}
+.sl-sub-title > span {
+  line-height: 72px;
+}
+.sl-sub-title {
+  width: 40vw;
+  margin: 0 auto;
+  text-align: right;
+}
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ltr {
+  direction: ltr;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-small {
+  font-size: 0.8em;
+}
+.text-xsmall {
+  font-size: 0.6em;
+}
+.text-large {
+  font-size: 1.2em;
+}
+.text-xlarge {
+  font-size: 1.4em;
+}
+.text-underline {
+  text-decoration: underline;
+}
+.text-ultralight {
+  font-weight: 200;
+}
+.text-light {
+  font-weight: 300;
+}
+.text-regular {
+  font-weight: normal;
+}
+.text-medium {
+  font-weight: 500;
+}
+.text-bold {
+  font-weight: bold;
+}
+.text-black {
+  font-weight: 900;
+}
+blockquote {
+  font-weight: 500;
+  padding: 10px;
+  border: 1px dashed #666666;
+}
+
+.mainbox {
+  width: 100%;
+  background-color: #efefef;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #ffff33;
+}
+
+.mainboxnegativ {
+  width: 100%;
+  background-color: #000000;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #ffff33;
+  color: #f9f9f9;
+}
+
+.mainbox2 {
+  font-size: 1em;
+  width: 90%;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mainbox3 {
+  width: 100%;
+  background-color: #b8b8b8;
+  display: table;
+  margin-bottom: 30px;
+  border-right: 8px solid #bd70ff;
+}
+
+.mainbox2negativ {
+  font-size: 1em;
+  color: #f9f9f9;
+  background-color: #000000;
+  padding-right: 20px;
+}
+
+.farsiparagraph {
+  font-size: 1em;
+  width: 47%;
+  float: right;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.englishparagraph {
+  font-size: 1em;
+  width: 47%;
+  float: left;
+  direction: ltr;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.rightbox {
+  width: 60%;
+  padding-right: 20px;
+  padding-left: 5px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  min-width: 0px;
+  background-color: #f7f7f7;
+}
+
+.titelbox {
+  width: 60%;
+  padding-right: 25px;
+  padding-left: 0px;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  min-width: 0px;
+  background-color: #f2f2f2;
+  color: #4b4b4b;
+}
+
+.lefttbox {
+  padding-right: 20px;
+  padding-left: 4px;
+  float: right;
+  margin-bottom: 10px;
+  min-width: 0px;
+}
+
+.alphabet {
+  width: 35%;
+  float: left;
+  font-size: 21em;
+  text-align: center;
+  font-weight: 500;
+  color: #999999;
+}
+
+.alphabet2 {
+  width: 35%;
+  float: left;
+  direction: ltr;
+  font-size: 1.6em;
+  text-align: left;
+  font-weight: 500;
+  color: #333333;
+  margin-top: 100px;
+}
+.footer {
+  font-weight: 300;
+  font-size: 0.7em;
+  text-align: center;
+  direction: ltr;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.sec-title h3:after {
+  margin-left: 0px;
+  right: unset;
+  left: 0;
+}
+.sec-title h3 {
+  padding-right: 0px;
+  padding-left: 125px;
+}
+.sec-title {
+  text-align: right;
+}
+#intro-title:after {
+  right: 0 !important;
+  left: unset !important;
+}
+.owl-carousel .owl-nav {
+  right: unset;
+  left: 0;
+}
+.why-choose-us .services-responsibiity .services-item .service-mid-icon {
+  float: right;
+  margin-left: 15px;
+  margin-right: 0px;
+}
+#rs-header .menu-area .rs-menu ul.nav-menu li:last-child a {
+  margin-right: 20px;
+}
+#rs-header .menu-area .rs-menu ul.nav-menu li:first-child a {
+  margin-right: 0;
+}
+#rs-header .menu-area.rs-defult-header .appointment-cart {
+  left: 15px;
+  right: unset;
+}
+#rs-header .menu-area.rs-defult-header .appointment-cart ul.cart li {
+  padding-left: 0px;
+  padding-right: 25px;
+}
+#rs-header
+  .menu-area.rs-defult-header
+  .appointment-cart
+  ul.cart
+  li:first-child:before {
+  right: unset;
+  left: -15px;
+}
+.rs-portfolio .gridFilter button:last-child {
+  margin-right: 23px;
+}
+.rs-about-2 .sec-title3 h3:after {
+  left: unset;
+  right: 0;
+}
+.rs-about-2 {
+  padding-top: 80px;
+}
+.how-we-work.about-work .sec-title3 {
+  text-align: right;
+}
+.how-we-work.about-work .sec-title3 h3:after {
+  left: unset;
+  right: 0px;
+}
+.how-we-work.about-work.top-history .history-column {
+  text-align: right;
+}
+
+.rs-about-icon .icon-section .single-icon .icon-text {
+  left: unset;
+  right: 60px;
+}

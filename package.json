@@ -1,0 +1,23 @@
+{
+  "name": "navdis-website",
+  "version": "1.1.4",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "navdis",
+    "website"
+  ],
+  "author": "Milad Taghavi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongodb": "^3.1.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
