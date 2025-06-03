@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
-const MongoClient = require("mongodb").MongoClient;
+//const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const conf = require('./core/config.js');
 
@@ -14,19 +14,38 @@ let menuItems;
 const dbName = "navdis-website";
 
 // Create a new MongoClient
-const client = new MongoClient(conf.db.address, { useNewUrlParser: true });
+//const client = new MongoClient(conf.db.address, { useNewUrlParser: true });
 
 // Use connect method to connect to the Server
-client.connect(function (err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
+//client.connect(function (err) {
+//  assert.equal(null, err);
+//  console.log("Connected successfully to server");
 
-  db = client.db(dbName);
-  collection = db.collection("resources");
-  collection.findOne({ name: "menu" }, function (err, docs) {
-    assert.equal(err, null);
-    menuItems = docs;
-  });
+//  db = client.db(dbName);
+//  collection = db.collection("resources");
+//  collection.findOne({ name: "menu" }, function (err, docs) {
+//    assert.equal(err, null);
+//    menuItems = docs;
+//  });
+//});
+
+const fs  = require("fs");
+
+const jsonFilePath = "mongodb_collection/navdis-website.resources.json";
+
+// Read and parse JSON data
+fs.readFile(jsonFilePath, "utf8", (err, data) => {
+	if (err) {
+			console.error("Error reading Json file:", err);
+			return;
+	}
+	try {
+		collection = JSON.parse(data.replace(/\{\s*"\$oid"\s*:\s*"(.*?)"\s*\}/g, '"$1"'));
+		menuItems = collection.find(item => item.name === "menu");
+		console.log("Extracted menu items:", menuItems);
+	} catch (parseErr) {
+		console.error("Error parsing JSON data:", parseErr);
+	}
 });
 
 app.use("/images", express.static("images"));
@@ -79,34 +98,38 @@ app.engine(
     },
   })
 );
+console.log("Before setting view engine");
 app.set("view engine", "handlebars");
 
 app.get("/en", (req, res) => {
   // Get the documents collection
   // Insert some documents
 
-  collection.findOne({ name: 'index', lang: "en" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item  => item.name==="index" && item.lang === "en");
+  if(!docs) {
+	console.error("No matching record found");
+  } else {
     res.render("home/index", docs);
-  });
+  }
 });
 app.get("/en/index", (req, res) => {
   // Get the documents collection
   // Insert some documents
 
-  collection.findOne({ name: 'index', lang: "en" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "index" && item.lang === "en");
+  if(!docs) {
+	console.error("No matching record found");
+  } else {
     res.render("home/index", docs);
-  });
+  }
 });
 app.get("/fa", (req, res) => {
-  collection.findOne({ name: "index", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "index" && item.lang === "fa");
+  if(!docs) {
+	console.error("No matching record found");
+  } else {
     res.render("home/index", docs);
-  });
+  }
 });
 
 // app.get('/:page?', (req, res)=>{
@@ -126,15 +149,15 @@ app.get("/fa", (req, res) => {
 // });
 
 app.get("/", (req, res) => {
-  collection.findOne({ name: "index", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
-
-
+  const docs = collection.find(item => item.name === "index" && item.lang === "fa");
+  if(!docs) {
+	console.error("No Matching record found");
+  } else {
     res.render("home/index", docs);
-  });
+  }
 });
 app.get("/index", (req, res) => {
-  collection.findOne({ name: "index", lang: "fa" }, function (err, docs) {
+  collection.find({ name: "index", lang: "fa" }, function (err, docs) {
     assert.equal(err, null);
 
 
@@ -142,7 +165,7 @@ app.get("/index", (req, res) => {
   });
 });
 app.get("/fa/index", (req, res) => {
-  collection.findOne({ name: "index", lang: "fa" }, function (err, docs) {
+  collection.find({ name: "index", lang: "fa" }, function (err, docs) {
     assert.equal(err, null);
 
 
@@ -150,7 +173,7 @@ app.get("/fa/index", (req, res) => {
   });
 });
 app.get("/fa/projects", (req, res) => {
-  collection.findOne({ name: "projects", lang: "fa" }, function (err, docs) {
+  collection.find({ name: "projects", lang: "fa" }, function (err, docs) {
     assert.equal(err, null);
     const projectsList = docs.list.map(p => ({
       ...p,
@@ -166,7 +189,7 @@ app.get("/fa/projects", (req, res) => {
   });
 });
 app.get("/en/projects", (req, res) => {
-  collection.findOne({ name: "projects", lang: "en" }, function (err, docs) {
+  collection.find({ name: "projects", lang: "en" }, function (err, docs) {
     assert.equal(err, null);
     const projectsList = docs.list.map(p => ({
       ...p,
@@ -182,21 +205,21 @@ app.get("/en/projects", (req, res) => {
   });
 });
 app.get("/fa/about", (req, res) => {
-  collection.findOne({ name: "about", lang: "fa" }, function (err, docs) {
+  collection.find({ name: "about", lang: "fa" }, function (err, docs) {
     assert.equal(err, null);
 
     res.render("home/about", docs);
   });
 });
 app.get("/en/about", (req, res) => {
-  collection.findOne({ name: "about", lang: "en" }, function (err, docs) {
+  collection.find({ name: "about", lang: "en" }, function (err, docs) {
     assert.equal(err, null);
 
     res.render("home/about", docs);
   });
 });
 app.get("/fa/appreciations", (req, res) => {
-  collection.findOne(
+  collection.find(
     { name: "appreciations", lang: "fa" },
     function (err, docs) {
       assert.equal(err, null);
@@ -206,14 +229,14 @@ app.get("/fa/appreciations", (req, res) => {
   );
 });
 app.get("/fa/contact", (req, res) => {
-  collection.findOne({ name: "contact", lang: "fa" }, function (err, docs) {
+  collection.find({ name: "contact", lang: "fa" }, function (err, docs) {
     assert.equal(err, null);
 
     res.render("home/contact", docs);
   });
 });
 app.get("/en/contact", (req, res) => {
-  collection.findOne({ name: "contact", lang: "en" }, function (err, docs) {
+  collection.find({ name: "contact", lang: "en" }, function (err, docs) {
     assert.equal(err, null);
 
     res.render("home/contact", docs);
@@ -223,7 +246,7 @@ app.get("/en/contact", (req, res) => {
 app.get("/fa/project/:id", (req, res) => {
   let projectId = req.params.id;
 
-  collection.findOne(
+  collection.find(
     { name: "project", lang: "fa", id: projectId },
     function (err, docs) {
       assert.equal(err, null);
@@ -236,10 +259,11 @@ app.get("/fa/project/:id", (req, res) => {
     }
   );
 });
+console.log("Before en/project");
 app.get("/en/project/:id", (req, res) => {
   let projectId = req.params.id;
 
-  collection.findOne(
+  collection.find(
     { name: "project", lang: "en", id: projectId },
     function (err, docs) {
       assert.equal(err, null);
@@ -254,7 +278,7 @@ app.get("/en/project/:id", (req, res) => {
 });
 app.get("/fa/services/:name", (req, res) => {
   let serviceName = req.params.name;
-  collection.findOne({ name: "projects", lang: "fa" }, function (err, docs) {
+  collection.find({ name: "projects", lang: "fa" }, function (err, docs) {
     assert.equal(err, null);
     docs.list.sort((a, b) =>
       parseInt(a.subtitle) < parseInt(b.subtitle)
@@ -273,3 +297,4 @@ app.use(function (req, res, next) {
 app.listen(conf.server.port, () => {
   console.log("listening");
 });
+console.log("done");

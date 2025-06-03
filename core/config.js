@@ -10,12 +10,13 @@ const config = {
     host: '',
     port: Number(process.env.PORT) || 3000,
   },
-  db: {
-    address: process.env.MONGODB_URI
+  db:null, 
+//{
+   // address: process.env.MONGODB_URI
     // 'mongodb://root:example@db:27017/logserver',
     // address: 'mongodb://logUser:KxT5=NFu*e!5xCt_@185.94.96.66:27017/logserver',
-  },
+//  },
   // ...
+//};
 };
-
 module.exports = config;

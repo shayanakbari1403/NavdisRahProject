@@ -2,21 +2,26 @@ version: '3.8'
 
 services:
   app:
-    image: navdisrah/website:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app_services
     restart: unless-stopped
     ports:
       - 80:3000
-    environment:
-      MONGODB_URI: 'mongodb://root:LVTPz79DYyGQDFvyDD3XxKsDLh7NyjQ9@db:27017/navdis-website?authSource=admin'
-
-  db:
-    image: mongo:5.0.5
-    restart: unless-stopped
     volumes:
-      - ./data/db:/data/db
+      - ./mongodb_collection/navdis-website.resources.json:/app/navdis-website.resources.json
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: LVTPz79DYyGQDFvyDD3XxKsDLh7NyjQ9
-      MONGO_INITDB_DATABASE: navdis-website
-    ports:
-      - 27017:27017
+      CONFIG_FILE: "/app/navdis-website.resources.json"
+
+#  db:
+#    image: mongo:5.0.5
+#    restart: unless-stopped
+#    volumes:
+#      - ./data/db:/data/db
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: LVTPz79DYyGQDFvyDD3XxKsDLh7NyjQ9
+#      MONGO_INITDB_DATABASE: navdis-website
+#    ports:
+#      - 27017:27017
