@@ -157,24 +157,26 @@ app.get("/", (req, res) => {
   }
 });
 app.get("/index", (req, res) => {
-  collection.find({ name: "index", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
-
-
+  const docs = collection.find(item => item.name === "index" &&& item.lang === "fa");
+  if(!docs) {
+	  console.error("No Matching record found");
+  } else {
     res.render("home/index", docs);
-  });
+  }
 });
 app.get("/fa/index", (req, res) => {
-  collection.find({ name: "index", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
-
-
+	const docs = collection.find(item => item.name === "index" && item.lang === "fa");
+  if(!docs) {
+	  console.error("No Matching record found");
+  } else {
     res.render("home/index", docs);
-  });
+  }
 });
 app.get("/fa/projects", (req, res) => {
-  collection.find({ name: "projects", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
+  const docs = collection.find(item => item.name === "projects" && item.lang === "fa");
+  if(!docs) {
+	  console.error("No Matching record found");
+  } else {
     const projectsList = docs.list.map(p => ({
       ...p,
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
@@ -186,11 +188,13 @@ app.get("/fa/projects", (req, res) => {
       list: projectsList
     }
     res.render("home/projects", model);
-  });
+  }
 });
 app.get("/en/projects", (req, res) => {
-  collection.find({ name: "projects", lang: "en" }, function (err, docs) {
-    assert.equal(err, null);
+  const docs = collection.find(item => item.name === "projects" && item.lang === "en");
+  if(!docs) {
+	  console.error("No matching record found");
+  } else {
     const projectsList = docs.list.map(p => ({
       ...p,
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
@@ -202,84 +206,76 @@ app.get("/en/projects", (req, res) => {
       list: projectsList
     }
     res.render("home/projects", model);
-  });
+  }
 });
 app.get("/fa/about", (req, res) => {
-  collection.find({ name: "about", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "about" && item.lang === "fa");
+  if(!docs) {
+	  console.error("No matching record found");
+  } else {
     res.render("home/about", docs);
-  });
+  }
 });
 app.get("/en/about", (req, res) => {
-  collection.find({ name: "about", lang: "en" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "about" && item.lang === "en");
+  if(!docs) {
+	  consle.error("No matching record found");
+  } else {
     res.render("home/about", docs);
-  });
+  }
 });
 app.get("/fa/appreciations", (req, res) => {
-  collection.find(
-    { name: "appreciations", lang: "fa" },
-    function (err, docs) {
-      assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "appreciations" && item.lang === "fa");
+  if(!docs) {
+	  consle.error("No matching record found");
+  } else {
       res.render("home/appreciations", docs);
-    }
-  );
+  }
 });
 app.get("/fa/contact", (req, res) => {
-  collection.find({ name: "contact", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "contact" && item.lang === "fa");
+  if(!docs) {
+	  consle.error("No matching record found");
+  } else {
     res.render("home/contact", docs);
-  });
+  }
 });
 app.get("/en/contact", (req, res) => {
-  collection.find({ name: "contact", lang: "en" }, function (err, docs) {
-    assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "contact" && item.lang === "en");
+  if(!docs) {
+	  consle.error("No matching record found");
+  } else {
     res.render("home/contact", docs);
-  });
+  }
 });
 
 app.get("/fa/project/:id", (req, res) => {
   let projectId = req.params.id;
 
-  collection.find(
-    { name: "project", lang: "fa", id: projectId },
-    function (err, docs) {
-      assert.equal(err, null);
-
+  const docs = collection.find(item => item.name === "project" && item.lang === "fa");
       if (docs == null) {
         res.render("home/not_found", { lang: "fa" });
-        return;
+      } else {
+      	res.render("home/project", docs);
       }
-      res.render("home/project", docs);
-    }
-  );
 });
 console.log("Before en/project");
 app.get("/en/project/:id", (req, res) => {
   let projectId = req.params.id;
 
-  collection.find(
-    { name: "project", lang: "en", id: projectId },
-    function (err, docs) {
-      assert.equal(err, null);
-
-      if (docs == null) {
+  const docs = collection.find(item => item.name === "project" && item.lang === "en" && item.id === item.projectId);
+  if (docs == null) {
         res.render("home/not_found", { lang: "en" });
-        return;
-      }
+  } else {
       res.render("home/project", docs);
-    }
-  );
+  } 
 });
 app.get("/fa/services/:name", (req, res) => {
   let serviceName = req.params.name;
-  collection.find({ name: "projects", lang: "fa" }, function (err, docs) {
-    assert.equal(err, null);
+  const docs = collection.find(item => item.name === "projects" && item.lang === "fa");
+  if (docs == null) {
+        res.render("home/not_found", { lang: "en" });
+  } else {
     docs.list.sort((a, b) =>
       parseInt(a.subtitle) < parseInt(b.subtitle)
         ? 1
@@ -289,7 +285,7 @@ app.get("/fa/services/:name", (req, res) => {
     );
     docs["service"] = serviceName;
     res.render("home/projects", docs);
-  });
+  }
 });
 app.use(function (req, res, next) {
   res.render("home/not_found");
