@@ -157,7 +157,7 @@ app.get("/", (req, res) => {
   }
 });
 app.get("/index", (req, res) => {
-  const docs = collection.find(item => item.name === "index" &&& item.lang === "fa");
+  const docs = collection.find(item => item.name === "index" && item.lang === "fa");
   if(!docs) {
 	  console.error("No Matching record found");
   } else {
