@@ -252,7 +252,7 @@ app.get("/en/contact", (req, res) => {
 app.get("/fa/project/:id", (req, res) => {
   let projectId = req.params.id;
 
-  const docs = collection.find(item => item.name === "project" && item.lang === "fa");
+  const docs = collection.find(item => item.name === "project" && item.lang === "fa" && item.id === projectId);
       if (docs == null) {
         res.render("home/not_found", { lang: "fa" });
       } else {
@@ -263,7 +263,7 @@ console.log("Before en/project");
 app.get("/en/project/:id", (req, res) => {
   let projectId = req.params.id;
 
-  const docs = collection.find(item => item.name === "project" && item.lang === "en" && item.id === item.projectId);
+  const docs = collection.find(item => item.name === "project" && item.lang === "en" && item.id === projectId);
   if (docs == null) {
         res.render("home/not_found", { lang: "en" });
   } else {
