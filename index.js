@@ -96,10 +96,10 @@ app.engine(
         return arg1 == arg2 ? options.fn(this) : options.inverse(this);
       },
       toggleLabel: function(lang) {
-	if(lang === 'fa') {
-		return 'منو';
+	if(lang == "fa") {
+		return "منو";
 	} else {
-		return 'Menu';
+		return "Menu";
 	}
       },
     },
