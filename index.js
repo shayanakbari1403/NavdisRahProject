@@ -116,7 +116,7 @@ app.engine(
 		return "Project Name";
 	}
       },
-      employer: function (lang) {
+      employerFunc: function (lang) {
 	if(lang === 'fa') {
 		return "کارفرما";
 	} else {
@@ -144,7 +144,7 @@ app.engine(
 		return "End Year";
 	}
       },
-      status: function (lang) {
+      statusFunc: function (lang) {
 	if(lang === 'fa') {
 		return "وضعیت";
 	} else {
