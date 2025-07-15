@@ -20,7 +20,7 @@
             <!-- Project style Start -->
             <div id="rs-project-style" class="rs-project-style pt-100 pb-100">
                 <div class="container">
-                        <h3 class="p-style-title">جزئیات پروژه</h3>
+                        <h3 class="p-style-title">{{projectDetails lang}}</h3>
                     <div class="row">
                          <div class="p-style-wrap col-md-8 col-lg-7">
                         <div class="row">
@@ -48,13 +48,13 @@
                             <div class="ps-informations mb-md-30">
                                 <h4 class="info-title">{{title}}</h4>
                                 <ul>
-                                    {{!-- <li><span>نام پروژه:  </span>{{title}}</li>                     --}}
-                                    <li><span>کارفرما:  </span>{{employer}}</li>                    
-                                    {{!-- <li><span>دستگاه نظارت:  </span>{{observer}}</li> --}}
-                                    <li><span>سال شروع: </span>{{start_year}}</li>
-                                    {{!-- <li><span>سال خاتمه: </span>{{end_year}}</li> --}}
-                                    <li><span>وضعیت: </span>{{status}}</li>
-                                    <li><span>مشخصات کار: </span>{{{details}}}</li>
+                                    {{!-- <li><span>{{projectName lang}}:  </span>{{title}}</li>                     --}}
+                                    <li><span>{{employer lang}}:  </span>{{employer}}</li>                    
+                                    {{!-- <li><span>{{supervision lang}}:  </span>{{observer}}</li> --}}
+                                    <li><span>{{startYear lang}}: </span>{{start_year}}</li>
+                                    {{!-- <li><span>{{endYear lang}}: </span>{{end_year}}</li> --}}
+                                    <li><span>{{status lang}}: </span>{{status}}</li>
+                                    <li><span>{{constructionHighlights lang}}: </span>{{{details}}}</li>
                                 </ul>
                             </div>
                         </div>
