@@ -102,6 +102,62 @@ app.engine(
 		return "Menu";
 	}
       },
+      projectDetails: function (lang) {
+	if(lang === 'fa') {
+		return "جزئیات پروژه";
+	} else {
+		return "Project Details";
+	}
+      },
+      projectName: function (lang) {
+	if(lang === 'fa') {
+		return "نام پروژه";
+	} else {
+		return "Project Name";
+	}
+      },
+      employer: function (lang) {
+	if(lang === 'fa') {
+		return "کارفرما";
+	} else {
+		return "Employer";
+	}
+      },
+      supervision: function (lang) {
+	if(lang === 'fa') {
+		return "دستگاه نظارت";
+	} else {
+		return "Supervision";
+	}
+      },
+      startYear: function (lang) {
+	if(lang === 'fa') {
+		return "سال شروع";
+	} else {
+		return "Start Year";
+	}
+      },
+      endYear: function (lang) {
+	if(lang === 'fa') {
+		return "سال خاتمه";
+	} else {
+		return "End Year";
+	}
+      },
+      status: function (lang) {
+	if(lang === 'fa') {
+		return "وضعیت";
+	} else {
+		return "Status";
+	}
+      },
+      constructionHighlights: function (lang) {
+	if(lang === 'fa') {
+		return "مشخصات کار";
+	} else {
+		return "Construction Highlights";
+	}
+      },
     },
   })
 );
