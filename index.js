@@ -266,8 +266,7 @@ app.get("/en/projects", (req, res) => {
  
  if(selectedCategory !== "All")
  {
-	 projectsList = projectsList.filter(project =>
-  project.categories.includes(selectedCategory);
+	 projectsList = projectsList.filter(project => project.categories.includes(selectedCategory);
  }
     const model = {
       ...docs,
