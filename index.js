@@ -238,8 +238,9 @@ app.get("/fa/index", (req, res) => {
     res.render("home/index", docs);
   }
 });
-app.get("/fa/projects", (req, res) => {
-  const docs = collection.find(item => item.name === "projects" && item.lang === "fa");
+app.get("/fa/projects/:category?", (req, res) => {
+  const selectedCategory = req.params.category || "all";
+  const docs = collection.find(item => item.name === "projects" && item.lang === "en");
   if(!docs) {
 	  console.error("No Matching record found");
   } else {
@@ -248,7 +249,10 @@ app.get("/fa/projects", (req, res) => {
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
     })).sort((a, b) => b.year - a.year);
 
-
+    if(selectedCategory !== "all")
+    {
+	 projectsList = projectsList.filter(project => project.categories.includes(selectedCategory));
+    }
     const model = {
       ...docs,
       list: projectsList
