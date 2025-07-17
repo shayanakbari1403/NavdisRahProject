@@ -254,16 +254,21 @@ app.get("/fa/projects", (req, res) => {
   }
 });
 app.get("/en/projects", (req, res) => {
+  const selectedCategory = req.params.category || "All";
   const docs = collection.find(item => item.name === "projects" && item.lang === "en");
   if(!docs) {
 	  console.error("No matching record found");
   } else {
-    const projectsList = docs.list.map(p => ({
+  const projectsList = docs.list.map(p => ({
       ...p,
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
     })).sort((a, b) => b.year - a.year);
-
-
+ 
+ if(selectedCategory !== "All")
+ {
+	 projectsList = projectsList.filter(project =>
+  project.categories.includes(selectedCategory)
+ }
     const model = {
       ...docs,
       list: projectsList
