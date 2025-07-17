@@ -256,7 +256,7 @@ app.get("/fa/projects", (req, res) => {
     res.render("home/projects", model);
   }
 });
-app.get("/en/projects/:category", (req, res) => {
+app.get("/en/projects/:category?", (req, res) => {
   const selectedCategory = req.params.category || "all";
   const docs = collection.find(item => item.name === "projects" && item.lang === "en");
   if(!docs) {
