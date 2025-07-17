@@ -30,11 +30,6 @@ const dbName = "navdis-website";
 //});
 
 const fs  = require("fs");
-const hbs = require('hbs');
-
-hbs.registerHelper('lowercase', function(str) {
-  return str.toLowerCase();
-});
 
 const jsonFilePath = "mongodb_collection/navdis-website.resources.json";
 
@@ -162,6 +157,9 @@ app.engine(
 	} else {
 		return "Construction Highlights";
 	}
+      },
+      lowercase: function(str) {
+	 return str.toLowerCase();
       },
     },
   })
