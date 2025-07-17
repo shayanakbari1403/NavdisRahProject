@@ -30,6 +30,11 @@ const dbName = "navdis-website";
 //});
 
 const fs  = require("fs");
+const hbs = require('hbs');
+
+hbs.registerHelper('lowercase', function(str) {
+  return str.toLowerCase();
+});
 
 const jsonFilePath = "mongodb_collection/navdis-website.resources.json";
 
@@ -254,7 +259,7 @@ app.get("/fa/projects", (req, res) => {
   }
 });
 app.get("/en/projects/:category", (req, res) => {
-  const selectedCategory = req.params.category || "All";
+  const selectedCategory = req.params.category || "all";
   const docs = collection.find(item => item.name === "projects" && item.lang === "en");
   if(!docs) {
 	  console.error("No matching record found");
@@ -264,7 +269,7 @@ app.get("/en/projects/:category", (req, res) => {
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
     })).sort((a, b) => b.year - a.year);
  
- if(selectedCategory !== "All")
+ if(selectedCategory !== "all")
  {
 	 projectsList = projectsList.filter(project => project.categories.includes(selectedCategory));
  }
