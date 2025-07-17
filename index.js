@@ -350,6 +350,23 @@ app.get("/fa/services/:name", (req, res) => {
     res.render("home/projects", docs);
   }
 });
+app.get("/en/services/:name", (req, res) => {
+  let serviceName = req.params.name;
+  const docs = collection.find(item => item.name === "projects" && item.lang === "en");
+  if (docs == null) {
+        res.render("home/not_found", { lang: "en" });
+  } else {
+    docs.list.sort((a, b) =>
+      parseInt(a.subtitle) < parseInt(b.subtitle)
+        ? 1
+        : parseInt(b.subtitle) < parseInt(a.subtitle)
+          ? -1
+          : 0
+    );
+    docs["service"] = serviceName;
+    res.render("home/projects", docs);
+  }
+});
 app.use(function (req, res, next) {
   res.render("home/not_found");
 })
