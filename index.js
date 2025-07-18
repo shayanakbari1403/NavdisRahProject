@@ -281,7 +281,8 @@ app.get("/en/projects/:category?", (req, res) => {
     const model = {
       ...docs,
       list: projectsList,
-      selectedCategory
+      selectedCategory,
+      lang
     };
 
     res.render("home/projects", model);
