@@ -277,12 +277,11 @@ app.get("/en/projects/:category?", (req, res) => {
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
     })).sort((a, b) => b.year - a.year);
 
-    if (selectedCategory !== "all") { projectsList = projectsList.filter(project => project.categories && project.categories.toLowerCase().includes(selectedCategory) ); }
-	
+    
     const model = {
       ...docs,
       list: projectsList,
-      selectedCategory: selectedCategory,
+      selectedCategory,
       lang
     };
 
