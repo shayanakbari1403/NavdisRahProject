@@ -20,8 +20,8 @@
         <div class="gridFilter text-center">
             {{#each categories}}
             <!-- <button class='{{#if @first}}active{{/if}}' data-filter="{{name}}">{{title}}</button> -->
-            <a href="/{{lang}}/projects/{{lowercase title}}">
-                <button class="{{#if @first}}active{{/if}}">{{title}}</button>
+            <a href="/{{lang}}/projects/{{lowercase title}}" class="btn {{#if  @first}}active{{/if}}">
+                {{title}}
             </a>
             {{/each}}
             {{!-- <button data-filter=".filter2">Finance</button>
