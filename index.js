@@ -261,37 +261,51 @@ app.get("/fa/projects/:category?", (req, res) => {
   }
 });
 app.get("/en/projects/:category?", (req, res) => {
-  const selectedCategory = req.params.category?.toLowerCase() || "all";
-  const lang = "en";
-  const docs = collection.find(item => item.name === "projects" && item.lang === "en");
-  if (!docs) {
-    console.error("No matching record found");
-    return res.status(404).send("Projects not found");
+  try {
+    const selectedCategory = decodeURIComponent(req.params.category?.toLowerCase() || "all");
+    const lang = "en";
+    const docs = collection.find(item => item.name === "projects" && item.lang === "en");
+
+    if (!docs) {
+      console.error("No matching record found");
+      return res.status(404).send("Projects not found");
+    }
+
+    let projectsList = docs.list.map(p => ({
+      ...p,
+      year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
+    })).sort((a, b) => b.year - a.year);
+
+    if (selectedCategory !== "all") {
+      projectsList = projectsList.filter(project => {
+        if (!project.categories) return false;
+
+        if (Array.isArray(project.categories)) {
+          return project.categories.map(c => c.toLowerCase()).includes(selectedCategory);
+        }
+
+        if (typeof project.categories === 'string') {
+          return project.categories.toLowerCase().includes(selectedCategory);
+        }
+
+        return false;
+      });
+    }
+
+    const model = {
+      ...docs,
+      list: projectsList,
+      selectedCategory: selectedCategory,
+      lang
+    };
+
+    res.render("projects", model);
+  } catch (err) {
+    console.error("Error in /en/projects/:category route:", err);
+    res.status(500).send("Internal Server Error");
   }
-
-  let projectsList = docs.list.map(p => ({
-    ...p,
-    year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
-  })).sort((a, b) => b.year - a.year);
-
-  if (selectedCategory !== "all") {
-    projectsList = projectsList.filter(project => {
-  	if (Array.isArray(project.categories)) {
-    		return project.categories.map(c => c.toLowerCase()).includes(selectedCategory);
-  	}
-  	return project.categories?.toLowerCase().includes(selectedCategory);
-	});
-  }
-
-  const model = {
-    ...docs,
-    list: projectsList,
-    selectedCategory: selectedCategory,
-    lang
-  };
-
-  res.render("home/projects", model);
 });
+
 app.get("/fa/about", (req, res) => {
   const docs = collection.find(item => item.name === "about" && item.lang === "fa");
   if(!docs) {
