@@ -19,7 +19,8 @@
     <div id="rs-portfolio" class="rs-portfolio sec-spacer">
         <div class="gridFilter text-center">
             {{#each categories}}
-            <!-- <button class='{{#if @first}}active{{/if}}' data-filter="{{name}}">{{title}}</button> --> <a href="/{{lang}}/projects/{{lowercase title}}" class="btn {{#isEqual lowercase title selectedCategory}}active{{/isEqual}}"> {{title}} 
+            <button class='{{#if @first}}active{{/if}}' data-filter="{{name}}">{{title}}</button> 
+            <!--  <a href="/{{lang}}/projects/{{lowercase title}}" class="btn {{#isEqual lowercase title selectedCategory}}active{{/isEqual}}"> {{title}} --> 
             <p>Lang: {{lang}}</p>
             <p>Title: {{title}}</p>
             <p>Selected: {{selectedCategory}}</p>
