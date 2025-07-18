@@ -280,8 +280,7 @@ app.get("/en/projects/:category?", (req, res) => {
     
     const model = {
       ...docs,
-      list: projectsList,
-      selectedCategory
+      list: projectsList
     };
 
     res.render("home/projects", model);
