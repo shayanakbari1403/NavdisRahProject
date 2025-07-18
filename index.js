@@ -260,11 +260,7 @@ app.get("/fa/projects/:category?", (req, res) => {
     res.render("home/projects", model);
   }
 });
-app.get("/en/projects/:category?", (req, res) => {
-    const selectedCategory = req.params.category && typeof req.params.category === 'string'
-  		? req.params.category.toLowerCase()
-  		: "all";
-    const lang = "en";
+app.get("/en/projects", (req, res) => {
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
     if (!docs) {
