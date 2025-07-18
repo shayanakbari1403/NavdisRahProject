@@ -262,7 +262,9 @@ app.get("/fa/projects/:category?", (req, res) => {
 });
 app.get("/en/projects/:category?", (req, res) => {
   try {
-    const selectedCategory = req.params.category?.toLowerCase() || "all";
+    const selectedCategory = req.params.category && typeof req.params.category === 'string'
+  		? req.params.category.toLowerCase()
+  		: "all";
     const lang = "en";
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
