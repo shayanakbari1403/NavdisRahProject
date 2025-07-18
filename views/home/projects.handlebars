@@ -22,15 +22,14 @@
             <button class='{{#if @first}}active{{/if}}' data-filter="{{name}}">{{title}}</button>
             <!-- <a href="/projects/{{lowercase title}}">
                 {{title}}
+            <p>Selected: {{selectedCategory}}</p>
+        <p>Current: {{lowercase title}}</p>
             </a> -->
             {{/each}}
             {{!-- <button data-filter=".filter2">Finance</button>
             <button class="active" data-filter="*">All Projects</button>
             <button data-filter=".filter3">Marketing</button> --}}
         </div><!-- .gridFilter end-->
-        <p>Selected: {{selectedCategory}}</p>
-        <p>Current: {{lowercase title}}</p>
-
         <div class="row grid">
             {{#each list}}
             <div class="col-lg-3 col-md-6 col-sm-6 mb-30 grid-item {{categories}}">
