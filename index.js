@@ -261,7 +261,6 @@ app.get("/fa/projects/:category?", (req, res) => {
   }
 });
 app.get("/en/projects/:category?", (req, res) => {
-  try {
     const selectedCategory = req.params.category && typeof req.params.category === 'string'
   		? req.params.category.toLowerCase()
   		: "all";
@@ -293,10 +292,6 @@ app.get("/en/projects/:category?", (req, res) => {
     };
 
     res.render("projects", model);
-  } catch (err) {
-    console.error("Error in /en/projects/:category route:", err);
-    res.status(500).send("Internal Server Error");
-  }
 });
 
 app.get("/fa/about", (req, res) => {
