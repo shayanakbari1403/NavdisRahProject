@@ -268,7 +268,7 @@ app.get("/en/projects", (req, res) => {
       return res.status(404).send("Projects not found");
     }
 
-    let projectsList = docs.list.map(p => ({
+    const projectsList = docs.list.map(p => ({
       ...p,
       year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
     })).sort((a, b) => b.year - a.year);
