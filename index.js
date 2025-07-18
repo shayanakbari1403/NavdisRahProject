@@ -275,15 +275,18 @@ app.get("/en/projects/:category?", (req, res) => {
   })).sort((a, b) => b.year - a.year);
 
   if (selectedCategory !== "all") {
-    projectsList = projectsList.filter(project => 
-      project.categories && project.categories.toLowerCase().includes(selectedCategory)
-    );
+    projectsList = projectsList.filter(project => {
+  	if (Array.isArray(project.categories)) {
+    		return project.categories.map(c => c.toLowerCase()).includes(selectedCategory);
+  	}
+  	return project.categories?.toLowerCase().includes(selectedCategory);
+	});
   }
 
   const model = {
     ...docs,
     list: projectsList,
-    selectedCategory: category,
+    selectedCategory: selectedCategory,
     lang
   };
 
