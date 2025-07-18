@@ -262,7 +262,7 @@ app.get("/fa/projects/:category?", (req, res) => {
 });
 app.get("/en/projects/:category?", (req, res) => {
   try {
-    const selectedCategory = decodeURIComponent(req.params.category?.toLowerCase() || "all");
+    const selectedCategory = req.params.category?.toLowerCase() || "all";
     const lang = "en";
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
@@ -295,8 +295,7 @@ app.get("/en/projects/:category?", (req, res) => {
     const model = {
       ...docs,
       list: projectsList,
-      selectedCategory: selectedCategory,
-      lang
+      selectedCategory
     };
 
     res.render("projects", model);
