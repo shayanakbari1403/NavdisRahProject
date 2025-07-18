@@ -277,19 +277,10 @@ app.get("/en/projects/:category?", (req, res) => {
     })).sort((a, b) => b.year - a.year);
 
     if (selectedCategory !== "all") {
-      projectsList = projectsList.filter(project => {
-        if (!project.categories) return false;
-
-        if (Array.isArray(project.categories)) {
-          return project.categories.map(c => c.toLowerCase()).includes(selectedCategory);
-        }
-
-        if (typeof project.categories === 'string') {
-          return project.categories.toLowerCase().includes(selectedCategory);
-        }
-
-        return false;
-      });
+	    if (selectedCategory !== "all") {
+	  projectsList = projectsList.filter(project =>
+	    project.categories?.toLowerCase().includes(selectedCategory)
+	  );
     }
 
     const model = {
