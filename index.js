@@ -283,7 +283,7 @@ app.get("/en/projects/:category?", (req, res) => {
       selectedCategory
     };
 
-    res.render("projects", model);
+    res.render("home/projects", model);
 });
 
 app.get("/fa/about", (req, res) => {
