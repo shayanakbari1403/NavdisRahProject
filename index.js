@@ -161,6 +161,9 @@ app.engine(
       lowercase: function(str) {
 	 return str.toLowerCase();
       },
+      ifCond: function (v1, v2, options) {
+      	return (v1 === v2) ? options.fn(this) : options.inverse(this);
+      }
     },
   })
 );
@@ -257,25 +260,32 @@ app.get("/fa/projects", (req, res) => {
   }
 });
 app.get("/en/projects", (req, res) => {
-    const service = req.query.service || null;
+    const { type } = req.query;
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
     if (!docs) {
       console.error("No matching record found");
     }
     else {
-		
+    let filteredList = doc.list;
 
-    const projectsList = docs.list.map(p => ({
-      ...p,
-      year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
-    })).sort((a, b) => b.year - a.year);
+    if (type) {
+	    filteredList = docs.list.filter(project =>
+	      project.categories.includes(type)
+	    );
+    }
+    const sortedList = filteredList
+	    .map(p => ({
+	      ...p,
+	      year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
+	    }))
+	    .sort((a, b) => b.year - a.year);
 
     
     const model = {
       ...docs,
-      list: projectsList,
-      service
+      list: sortedList,
+      selectedType: type || null 
     }
 
     res.render("home/projects", model);
