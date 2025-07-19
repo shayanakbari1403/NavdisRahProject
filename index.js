@@ -261,8 +261,9 @@ app.get("/en/projects", (req, res) => {
 
     if (!docs) {
       console.error("No matching record found");
-      return res.status(404).send("Projects not found");
     }
+    else {
+		
 
     const projectsList = docs.list.map(p => ({
       ...p,
@@ -273,9 +274,10 @@ app.get("/en/projects", (req, res) => {
     const model = {
       ...docs,
       list: projectsList
-    };
+    }
 
     res.render("home/projects", model);
+    }
 });
 
 app.get("/fa/about", (req, res) => {
