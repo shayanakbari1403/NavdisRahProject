@@ -57,15 +57,13 @@
     </div>
     <!-- Project Section End -->
 </section>
+{{#if service}}
 <script>
-    { { #if service } }
-    document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(function () {
-            document.querySelectorAll('[data-filter=".{{service}}"]')[0].click();
-        }, 1000);
-        {
-            {
-                /if}}
-            });
-
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const targetBtn = document.querySelector(`[data-filter="{{service}}"]`);
+    if (targetBtn) targetBtn.click();
+  }, 500);
+});
 </script>
+{{/if}}
