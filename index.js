@@ -260,7 +260,8 @@ app.get("/fa/projects", (req, res) => {
   }
 });
 app.get("/en/projects", (req, res) => {
-    const { type } = req.query;
+    const rawType = req.query.type; // e.g. ".bridge"
+    const type = rawType ? rawType.replace(/^\./, "").toLowerCase() : null;
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
     if (!docs) {
@@ -269,9 +270,9 @@ app.get("/en/projects", (req, res) => {
     else {
     let filteredList = doc.list;
 
-    if (type) {
+    if (type && type !== "*") {
 	    filteredList = docs.list.filter(project =>
-	      project.categories.includes(type)
+	      project.categories && project.categories.toLowerCase() === type
 	    );
     }
     const sortedList = filteredList
@@ -285,7 +286,7 @@ app.get("/en/projects", (req, res) => {
     const model = {
       ...docs,
       list: sortedList,
-      selectedType: type || null 
+      selectedType: rawType || "*" // Preserve original `.bridge` for matching buttons
     }
 
     res.render("home/projects", model);
