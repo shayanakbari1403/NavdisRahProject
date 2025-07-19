@@ -19,7 +19,7 @@
     <div id="rs-portfolio" class="rs-portfolio sec-spacer">
         <div class="gridFilter text-center">
             {{#each categories}}
-            <button class='{{#if @first}}active{{/if}}' data-filter="{{name}}">{{title}}</button>
+              <button class='{{#ifCond name ../selectedType}}active{{/ifCond}}' data-filter="{{name}}">{{title}}</button>
             {{/each}}
             {{!-- <button data-filter=".filter2">Finance</button>
             <button class="active" data-filter="*">All Projects</button>
