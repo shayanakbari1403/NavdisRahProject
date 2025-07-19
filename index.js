@@ -257,6 +257,7 @@ app.get("/fa/projects", (req, res) => {
   }
 });
 app.get("/en/projects", (req, res) => {
+    const service = req.query.service || null;
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
     if (!docs) {
@@ -273,7 +274,8 @@ app.get("/en/projects", (req, res) => {
     
     const model = {
       ...docs,
-      list: projectsList
+      list: projectsList,
+      service
     }
 
     res.render("home/projects", model);
