@@ -242,22 +242,39 @@ app.get("/fa/index", (req, res) => {
   }
 });
 app.get("/fa/projects", (req, res) => {
+    const rawType = req.query.type; // e.g. ".bridge"
+    const hideCategories = !!rawType;
+    const type = rawType ? rawType.replace(/^\./, "").toLowerCase() : null;
+    const docs = collection.find(item => item.name === "projects" && item.lang === "fa");
 
-  const docs = collection.find(item => item.name === "projects" && item.lang === "fa");
-  if(!docs) {
-	  console.error("No Matching record found");
-  } else {
-    const projectsList = docs.list.map(p => ({
-      ...p,
-      year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
-    })).sort((a, b) => b.year - a.year);
-	  
+    if (!docs) {
+      console.error("No matching record found");
+    }
+    else {
+    let filteredList = docs.list;
+
+    if (type && type !== "*") {
+	    filteredList = docs.list.filter(project =>
+	      project.categories && project.categories.toLowerCase() === type
+	    );
+    }
+    const sortedList = filteredList
+	    .map(p => ({
+	      ...p,
+	      year: isNaN(p.subtitle) || p.subtitle === '' ? 3000 : parseInt(p.subtitle)
+	    }))
+	    .sort((a, b) => b.year - a.year);
+
+    
     const model = {
       ...docs,
-      list: projectsList
+      list: sortedList,
+      selectedType: rawType || "*", // Preserve original `.bridge` for matching buttons
+      hideCategories: hideCategories
     }
+
     res.render("home/projects", model);
-  }
+    }
 });
 app.get("/en/projects", (req, res) => {
     const rawType = req.query.type; // e.g. ".bridge"
