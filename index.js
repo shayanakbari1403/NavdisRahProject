@@ -261,6 +261,7 @@ app.get("/fa/projects", (req, res) => {
 });
 app.get("/en/projects", (req, res) => {
     const rawType = req.query.type; // e.g. ".bridge"
+    const hideCategories = !!rawType;
     const type = rawType ? rawType.replace(/^\./, "").toLowerCase() : null;
     const docs = collection.find(item => item.name === "projects" && item.lang === "en");
 
@@ -286,7 +287,8 @@ app.get("/en/projects", (req, res) => {
     const model = {
       ...docs,
       list: sortedList,
-      selectedType: rawType || "*" // Preserve original `.bridge` for matching buttons
+      selectedType: rawType || "*", // Preserve original `.bridge` for matching buttons
+      hideCategories: hideCategories
     }
 
     res.render("home/projects", model);
