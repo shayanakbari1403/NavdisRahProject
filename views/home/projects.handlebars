@@ -17,14 +17,13 @@
 
     <!-- Project Section Start -->
     <div id="rs-portfolio" class="rs-portfolio sec-spacer">
-        <div class="gridFilter text-center">
-            {{#each categories}}
-              <button class='{{#ifCond name ../selectedType}}active{{/ifCond}}' data-filter="{{name}}">{{title}}</button>
-            {{/each}}
-            {{!-- <button data-filter=".filter2">Finance</button>
-            <button class="active" data-filter="*">All Projects</button>
-            <button data-filter=".filter3">Marketing</button> --}}
-        </div><!-- .gridFilter end-->
+        {{#unless hideCategories}}
+            <div class="gridFilter text-center">
+                {{#each categories}}
+                  <button class='{{#ifCond name ../selectedType}}active{{/ifCond}}' data-filter="{{name}}">{{title}}</button>
+                {{/each}}
+            </div><!-- .gridFilter end-->
+        {{/unless}}
         <div class="row grid">
             {{#each list}}
             <div class="col-lg-3 col-md-6 col-sm-6 mb-30 grid-item {{categories}}">
