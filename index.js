@@ -268,7 +268,7 @@ app.get("/en/projects", (req, res) => {
       console.error("No matching record found");
     }
     else {
-    let filteredList = doc.list;
+    let filteredList = docs.list;
 
     if (type && type !== "*") {
 	    filteredList = docs.list.filter(project =>
